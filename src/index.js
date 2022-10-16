@@ -10,11 +10,14 @@ const app = express()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 import './database.js'
+import indexRoutes from '../routes/index.js'
+import notesRoutes from '../routes/notes.js'
+import usersRoutes from '../routes/users.js'
 
 /* settings */
 app.set('port', process.env.PORT || 3000)
 app.set('views', path.join(__dirname, 'views'))
-app.engine('.hbs', exphbs({
+app.engine('.hbs', exphbs.engine({
   defaultLayout: 'main',
   layoutsDir: path.join(app.get('views'), 'layouts'),
   partialsDir: path.join(app.get('views'), 'partials'),
@@ -37,9 +40,11 @@ app.use(expressSessions({
 
 
 /* routes */
-app.use(import('../routes/index.js'))
-app.use(import('../routes/notes.js'))
-app.use(import('../routes/users.js'))
+
+app.use(indexRoutes)
+app.use(notesRoutes)
+app.use(usersRoutes)
+
 
 
 /* static files */
