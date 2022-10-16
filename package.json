@@ -28,6 +28,10 @@
     "method-override": "^3.0.0",
     "mongoose": "^6.6.5",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }

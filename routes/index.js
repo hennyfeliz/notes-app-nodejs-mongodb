@@ -1,10 +1,14 @@
 import express from 'express'
 const router = express.Router()
 
-router.get('/', (req, res) => {
+/* routes */
+/* router.get('/index/', (req, res) => {
   res.send('index...')
 })
 
+router.get('/:name', (req, res) => {
+  const {name} = req.params
+  res.send(`hello ${name}`)
+}) */
 
-
-export default router
+module.exports = router

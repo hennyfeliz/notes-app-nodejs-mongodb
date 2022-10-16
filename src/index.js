@@ -3,15 +3,17 @@ import path from 'path'
 import exphns from 'express-handlebars'
 import methodOverride from 'method-override'
 import expressSessions from 'express-session'
+import { fileURLToPath } from 'url'
 
 /* inizialisations */
 const app = express()
-
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 
 /* settings */
 app.set('port', process.env.PORT || 3000)
-app.set('views', path.join('__dirname', 'views'))
+app.set('views', path.join(__dirname, 'views'))
 app.engine('.hbs', exphns({
   defaultLayout: 'main',
   layoutsDir: path.join(app.get('views', 'layouts')),
