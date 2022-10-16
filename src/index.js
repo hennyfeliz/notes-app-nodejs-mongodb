@@ -11,7 +11,7 @@ const app = express()
 
 /* settings */
 app.set('port', process.env.PORT || 3000)
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join('__dirname', 'views'))
 app.engine('.hbs', exphns({
   defaultLayout: 'main',
   layoutsDir: path.join(app.get('views', 'layouts')),
@@ -35,7 +35,9 @@ app.use(expressSessions({
 
 
 /* routes */
-
+app.use('../routes/index.js')
+app.use('../routes/notes.js')
+app.use('../routes/users.js')
 
 
 /* static files */
