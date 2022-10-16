@@ -1,2 +1,2 @@
-# notes-app-nodejs-mongodb
+# notes app nodejs mongodb
 simple application for managing notes with nodejs
