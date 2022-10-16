@@ -1,6 +1,8 @@
 import express from 'express'
 import path from 'path'
 import exphns from 'express-handlebars'
+import methodOverride from 'method-override'
+import expressSessions from 'express-session'
 
 /* inizialisations */
 const app = express()
@@ -20,8 +22,13 @@ app.set('view engine', '.hbs')
 
 
 /* midlewares */
-
-
+app.use(express.urlencoded({extended: false}))
+app.use(methodOverride('_method'))
+app.use(expressSessions({
+  secret: 'mysecreatapp',
+  resave: true,
+  saveUninitialized: true
+}))
 
 /* global variables */
 
