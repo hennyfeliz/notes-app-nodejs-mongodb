@@ -2,12 +2,12 @@ import express from 'express'
 const router = express.Router()
 
 /* routes */
-router.get('/signin', (req, res) => {
+router.get('/users/signin', (req, res) => {
   res.send('registrando usuario')
 })
 
-router.get('/signup', (req, res) => {
+router.get('/users/signup', (req, res) => {
   res.send('formulario de autenticacion')
 })
 
-module.exports = router
+export default router
