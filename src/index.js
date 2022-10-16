@@ -25,7 +25,6 @@ app.engine('.hbs', exphbs.engine({
 }))
 app.set('view engine', '.hbs')
 
-
 /* midlewares */
 app.use(express.urlencoded({extended: false}))
 app.use(methodOverride('_method'))
@@ -48,7 +47,7 @@ app.use(usersRoutes)
 
 
 /* static files */
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname + '../public')))
 
 
 /* server inizialising */
