@@ -1,4 +1,5 @@
 import express from 'express'
+import path from 'path'
 
 /* inizialisations */
 const app = express()
@@ -7,6 +8,7 @@ const app = express()
 
 /* settings */
 app.set('port', process.env.PORT || 3000)
+app.set('views')
 
 
 /* midlewares */
