@@ -3,11 +3,11 @@ const router = express.Router()
 
 /* routes */
 router.get('/users/signin', (req, res) => {
-  res.send('registrando usuario')
+  res.render('users/signin')
 })
 
 router.get('/users/signup', (req, res) => {
-  res.send('formulario de autenticacion')
+  res.render('users/signup')
 })
 
 export default router
