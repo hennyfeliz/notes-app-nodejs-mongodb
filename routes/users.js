@@ -2,6 +2,7 @@ import express from 'express'
 const router = express.Router()
 import '../models/User.js'
 import User from '../models/User.js'
+import passport from 'passport'
 
 /* routes */
 router.get('/users/signin', (req, res) => {
@@ -12,6 +13,14 @@ router.get('/users/signin', (req, res) => {
 router.get('/users/signup', (req, res) => {
   res.render('users/signup')
 })
+
+/* AUTHENTICATION WITH PASSPORT */
+router.post('/users/signin', passport.authenticate('local', {
+  successRedirect: '/notes',
+  failureRedirect: '/users/signin',
+  failureFlash: true
+}))
+
 
 /* POST FOR USERS */
 router.post('/users/signup', async (req, res) => {

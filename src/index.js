@@ -16,6 +16,8 @@ import './database.js'
 import indexRoutes from '../routes/index.js'
 import notesRoutes from '../routes/notes.js'
 import usersRoutes from '../routes/users.js'
+import passport from 'passport'
+import '../config/passport.js'
 
 /* HANDLEBARS ISSUE - REPAIRING */
 const hbs = exphbs.create({
@@ -44,12 +46,15 @@ app.use(expressSessions({
   resave: true,
   saveUninitialized: true
 }))
-app.use(flash())
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg')
   res.locals.error_msg = req.flash('error_msg')
   next()
 })
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(flash())
+
 
 /* global variables */
 
