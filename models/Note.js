@@ -1,5 +1,4 @@
-import mongoose from "mongoose"
-import { Schema } from mongoose
+import mongoose, { Schema } from 'mongoose'
 
 
 const noteSchema = new Schema({
@@ -17,4 +16,4 @@ const noteSchema = new Schema({
   }
 })
 
-export default mongoose.model('Note', NoteSchema)
+export default mongoose.model('Note', noteSchema)
