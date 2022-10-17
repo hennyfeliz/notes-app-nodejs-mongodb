@@ -1,17 +1,18 @@
 import { Schema } from "mongoose";
 import bcrypt from 'bcryptjs'
+import mongoose from "mongoose";
 
 const newUser = new Schema({
   name: {
-    String,
+    type: String,
     required: true
   },
   email: {
-    String,
+    type: String,
     required: true
   },
   password: {
-    String, 
+    type: String, 
     required: true
   },
   date: {
@@ -31,6 +32,7 @@ newUser.methods.encryptPassword = async(password) => {
 newUser.methods.matchPassword = async function(password){
   return await bcrypt.compare(password, this.password)
 }
+
 
 
 export default mongoose.model('User', newUser)

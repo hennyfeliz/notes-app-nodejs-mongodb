@@ -8,6 +8,7 @@ router.get('/users/signin', (req, res) => {
   res.render('users/signin')
 })
 
+/* SIGNIN FOR USERS */
 router.get('/users/signup', (req, res) => {
   res.render('users/signup')
 })
@@ -15,8 +16,6 @@ router.get('/users/signup', (req, res) => {
 /* POST FOR USERS */
 router.post('/users/signup', async (req, res) => {
   const {name, email, password, confirm_password} = req.body
-
-  console.log(req.body)
 
   const errors = []
 
