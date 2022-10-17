@@ -1,5 +1,6 @@
 import express from "express";
 const router = express.Router();
+import '../models/Note.js'
 
 /* routes */
 
@@ -21,7 +22,7 @@ router.post("/notes/new-note", (req, res) => {
       description,
     });
   } else {
-    res.send("ok");
+
   }
 });
 
