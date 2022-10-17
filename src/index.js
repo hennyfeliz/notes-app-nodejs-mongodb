@@ -4,6 +4,7 @@ import exphbs from 'express-handlebars'
 import methodOverride from 'method-override'
 import expressSessions from 'express-session'
 import { fileURLToPath } from 'url'
+import Handlebars from 'handlebars'
 
 /* inizialisations */
 const app = express()
