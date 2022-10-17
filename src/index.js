@@ -6,6 +6,7 @@ import expressSessions from 'express-session'
 import { fileURLToPath } from 'url'
 import handlebars from 'handlebars'
 import {allowInsecurePrototypeAccess} from '@handlebars/allow-prototype-access'
+import flash from 'connect-flash'
 
 /* inizialisations */
 const app = express()
@@ -43,6 +44,12 @@ app.use(expressSessions({
   resave: true,
   saveUninitialized: true
 }))
+app.use(flash())
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.error_msg = req.flash('error_msg')
+  next()
+})
 
 /* global variables */
 
