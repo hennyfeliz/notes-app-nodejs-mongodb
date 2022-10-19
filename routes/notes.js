@@ -13,7 +13,7 @@ router.get("/notes/add", /* helpers.isAuthenticated, */ (req, res) => {
 
 /* GET ALL NOTES */
 router.get("/notes",/* helpers.isAuthenticated, */ async (req, res) => {
-  const notes = await Note.find().lean().sort({date: 'desc'});
+  const notes = await Note.find({user: req.user.id/* trae solo las notas de ese user */}).lean().sort({date: 'desc'});
   res.render('notes/all-notes', {
     notes /* le esta pasando los datos .hbs a esa plantilla, despues la renderiza */
   })
@@ -36,6 +36,7 @@ router.post("/notes/new-note", /* helpers.isAuthenticated, */ async (req, res) =
       title,
       description,
     });
+    newNote.user = req.user.id/* enlazando con las notas */
     await newNote.save();
     req.flash('success_msg', 'note added successfully!')
     res.redirect("/notes");
