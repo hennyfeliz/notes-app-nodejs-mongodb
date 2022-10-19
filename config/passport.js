@@ -16,8 +16,8 @@ passport.use(
       } else {
         /* const match = await User.matchPassword(password); */
         const match = await User.findOne({
-          password: password
-        })
+          password: password,
+        });
         if (match) {
           return done(null, user);
         } else {
@@ -31,12 +31,11 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user.id)
-})
+  done(null, user);
+});
 
 passport.deserializeUser((id, done) => {
   User.findById(id, (err, user) => {
-    done(err, user)
-  })
-})
-
+    done(err, user);
+  });
+});

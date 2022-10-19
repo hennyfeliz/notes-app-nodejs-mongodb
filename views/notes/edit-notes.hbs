@@ -7,13 +7,13 @@
       <form action="/notes/edit-note/{{note._id}}?_method=PUT" method="POST">
       <input type="hidden" name="_method" value="PUT">
         <div class="form-group">
-          <input type="text" class="form-control" name="title" placeholder="title" value="{{note.title}}" id="">
+          <input type="text" class="form-control mb-2" name="title" placeholder="title" value="{{note.title}}" id="">
         </div>
         <div class="form-group">
-          <textarea name="description" class="form-control">{{note.description}}</textarea>
+          <textarea name="description" class="form-control mb-2">{{note.description}}</textarea>
         </div>
         <div class="form-group">
-          <button class="btn btn-primary btn-block" type="submit">
+          <button class="btn btn-primary btn-block w-100" type="submit">
             Save
           </button>
         </div>

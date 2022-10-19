@@ -46,16 +46,9 @@ app.use(expressSessions({
   resave: true,
   saveUninitialized: true
 }))
-app.use((req, res, next) => {
-/*   res.locals.success_msg = req.flash('success_msg')
-  res.locals.error_msg = req.flash('error_msg') */
-  res.locals.success_msg = req.flash('success_msg')
-  res.locals.error_msg = req.flash('error_msg')
-  next()
-})
+
 app.use(passport.initialize())
 app.use(passport.session())
-app.use(flash())
 
 
 /* global variables */
@@ -67,6 +60,14 @@ app.use(flash())
 app.use(indexRoutes)
 app.use(notesRoutes)
 app.use(usersRoutes)
+app.use((req, res, next) => {
+  /*   res.locals.success_msg = req.flash('success_msg')
+    res.locals.error_msg = req.flash('error_msg') */
+    res.locals.success_msg = req.flash('success_msg')
+    res.locals.error_msg = req.flash('error_msg')
+    next()
+  })
+app.use(flash())
 
 
 /* static files */
