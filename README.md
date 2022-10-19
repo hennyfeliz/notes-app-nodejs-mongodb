@@ -1,6 +1,10 @@
 # notes app nodejs mongodb
 simple application for managing notes with nodejs
 
+## HOW TO USE
+1. Install dependencies: `npm install`.
+2. Run `npm run start`.
+
 
 ## ACCOUNT LOGIN
 <p align="center">
