@@ -58,7 +58,11 @@ router.post('/users/signup', async (req, res) => {
     req.flash('success_msg', 'youre registered!')
     res.redirect('/users/signin')
   }
+})
 
+router.get('/users/logout', (req, res) => {
+  req.logout
+  res.redirect('/')
 })
 
 export default router

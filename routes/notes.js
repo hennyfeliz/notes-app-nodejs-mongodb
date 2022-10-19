@@ -2,16 +2,17 @@ import express from "express";
 const router = express.Router();
 import "../models/Note.js";
 import Note from "../models/Note.js";
+import helpers from '../helpers/auth.js'
 
 /* routes */
 
 /* GET */
-router.get("/notes/add", (req, res) => {
+router.get("/notes/add", /* helpers.isAuthenticated, */ (req, res) => {
   res.render("notes/new-note");
 });
 
 /* GET ALL NOTES */
-router.get("/notes", async (req, res) => {
+router.get("/notes",/* helpers.isAuthenticated, */ async (req, res) => {
   const notes = await Note.find().lean().sort({date: 'desc'});
   res.render('notes/all-notes', {
     notes /* le esta pasando los datos .hbs a esa plantilla, despues la renderiza */
@@ -19,7 +20,7 @@ router.get("/notes", async (req, res) => {
 });
 
 /* POST */
-router.post("/notes/new-note", async (req, res) => {
+router.post("/notes/new-note", /* helpers.isAuthenticated, */ async (req, res) => {
   const { title, description } = req.body;
   const errors = [];
   if (!title) errors.push({ text: "please, insert a title!" });
@@ -43,14 +44,14 @@ router.post("/notes/new-note", async (req, res) => {
 
 /* PUT */
 
-router.get('/notes/edit/:id', async(req, res) => {
+router.get('/notes/edit/:id',/* helpers.isAuthenticated, */ async(req, res) => {
   const note = await Note.findById(req.params.id)
   res.render('notes/edit-notes', {
       note
   })
 })
 
-router.put('/notes/edit-note/:id', async(req, res) => {
+router.put('/notes/edit-note/:id', /* helpers.isAuthenticated, */ async(req, res) => {
   const {title, description} = req.body
   await Note.findByIdAndUpdate(req.params.id,{
     title, description
@@ -60,7 +61,7 @@ router.put('/notes/edit-note/:id', async(req, res) => {
 })
 
 /* DELETE */
-router.delete('/notes/delete/:id', async(req, res) => {
+router.delete('/notes/delete/:id', /* helpers.isAuthenticated, */ async(req, res) => {
   await Note.findByIdAndDelete(req.params.id)
   req.flash('success_msg', 'note deleted successfully!')
   res.redirect('/notes')
