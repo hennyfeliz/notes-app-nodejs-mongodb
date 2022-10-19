@@ -49,6 +49,8 @@ app.use(expressSessions({
 app.use((req, res, next) => {
 /*   res.locals.success_msg = req.flash('success_msg')
   res.locals.error_msg = req.flash('error_msg') */
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.error_msg = req.flash('error_msg')
   next()
 })
 app.use(passport.initialize())
@@ -65,7 +67,6 @@ app.use(flash())
 app.use(indexRoutes)
 app.use(notesRoutes)
 app.use(usersRoutes)
-
 
 
 /* static files */

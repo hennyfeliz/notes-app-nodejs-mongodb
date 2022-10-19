@@ -33,7 +33,5 @@ newUser.methods.matchPassword = async function(password){
   return await bcrypt.compare(password, this.password)
 }
 
-
-
 export default mongoose.model('User', newUser)
 

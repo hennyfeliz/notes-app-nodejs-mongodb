@@ -14,7 +14,10 @@ passport.use(
           message: "not found user...",
         });
       } else {
-        const match = await User.matchPassword(password);
+        /* const match = await User.matchPassword(password); */
+        const match = await User.findOne({
+          password: password
+        })
         if (match) {
           return done(null, user);
         } else {
